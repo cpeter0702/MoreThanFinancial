@@ -1,0 +1,86 @@
+entity MtsIncome {
+  incomeDate ZonedDateTime required,
+  incomeAmount BigDecimal required,
+  incomeType String,
+  incomeTypeDetail String,
+  incomePayer String,
+  incomeReceiver String,
+  incomeRemark String,
+  isActive Boolean,
+  modifier String,
+  modifyDatetime ZonedDateTime,
+  creator String,
+  createDatetime ZonedDateTime
+}
+
+entity MtsExpense {
+  expenseDate ZonedDateTime required,
+  expenseAmount BigDecimal required,
+  expenseType String,
+  expenseTypeDetail String,
+  expensePayer String,
+  expenseReceiver String,
+  expenseRemark String,
+  expenseReceipt ImageBlob,
+  isActive Boolean,
+  modifier String,
+  modifyDatetime ZonedDateTime,
+  creator String,
+  createDatetime ZonedDateTime
+}
+
+entity MoneyFlowView {
+  source String required,
+  businessId UUID required,
+  businessDate ZonedDateTime required,
+  businessAmt BigDecimal required,
+  businessType String,
+  businessTypeDetail String,
+  payer String,
+  receiver String,
+  remark String,
+  isActive Boolean
+}
+
+entity NayaxTransactions {
+    siteID Integer,
+    transactionID String required,
+    paymentMethodID Integer,
+    currency String required,
+    machineName String required,
+    authorizationValue Integer,
+    campaignID String,
+    settlementValue BigDecimal,
+    productSelectionInfo String required,
+    cardNumber String required,
+    authrizationRRN String required,
+    machineAuthorizationTime ZonedDateTime,
+    machineSettlementTime ZonedDateTime,
+    creditCardType String,
+    cardType String,
+    paymentMethod String,
+    transactionStatusID Integer,
+    transactionTypeID Integer,
+    billingProvider String,
+    prepaidCardHolderName String,
+    refundRequestBy String,
+    refundRequestDate ZonedDateTime,
+    refundReason String
+}
+
+enum Members {
+  TianYue
+  PeterLiao,
+  EdwardLee
+  MTS
+}
+
+enum MoneyTypes {
+  CA,
+  BT,
+  CH,
+  CC,
+  WI,
+  VM
+}
+
