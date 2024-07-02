@@ -1,0 +1,35 @@
+{
+  "moreThanFinancialApp": {
+    "mtsIncome": {
+      "home": {
+        "title": "Mts Incomes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Mts Income",
+        "createOrEditLabel": "创建或编辑 Mts Income",
+        "notFound": "No Mts Incomes found"
+      },
+      "created": "Mts Income {{ param }} 创建成功",
+      "updated": "Mts Income {{ param }} 更新成功",
+      "deleted": "Mts Income {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Mts Income {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Mts Income"
+      },
+      "id": "ID",
+      "incomeDate": "Income Date",
+      "incomeAmount": "Income Amount",
+      "incomeType": "Income Type",
+      "incomeTypeDetail": "Income Type Detail",
+      "incomePayer": "Income Payer",
+      "incomeReceiver": "Income Receiver",
+      "incomeRemark": "Income Remark",
+      "isActive": "Is Active",
+      "modifier": "Modifier",
+      "modifyDatetime": "Modify Datetime",
+      "creator": "Creator",
+      "createDatetime": "Create Datetime"
+    }
+  }
+}

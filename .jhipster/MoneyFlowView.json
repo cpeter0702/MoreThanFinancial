@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20240702022901"
+  },
+  "applications": "*",
+  "entityTableName": "money_flow_view",
+  "fields": [
+    {
+      "fieldName": "source",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "businessId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "businessDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "businessAmt",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "businessType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "businessTypeDetail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "payer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receiver",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "MoneyFlowView",
+  "relationships": [],
+  "searchEngine": "no"
+}

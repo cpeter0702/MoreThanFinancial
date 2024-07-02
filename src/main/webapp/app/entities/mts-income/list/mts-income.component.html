@@ -1,0 +1,174 @@
+<div>
+  <h2 id="page-heading" data-cy="MtsIncomeHeading">
+    <span jhiTranslate="moreThanFinancialApp.mtsIncome.home.title">Mts Incomes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.mtsIncome.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-mts-income"
+        [routerLink]="['/mts-income/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.mtsIncome.home.createLabel">建立一筆新的 Mts Income</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (mtsIncomes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="moreThanFinancialApp.mtsIncome.home.notFound">No Mts Incomes found</span>
+    </div>
+  }
+
+  @if (mtsIncomes && mtsIncomes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeDate">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeDate">Income Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeAmount">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeAmount">Income Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeType">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeType">Income Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeTypeDetail">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeTypeDetail">Income Type Detail</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomePayer">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomePayer">Income Payer</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeReceiver">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeReceiver">Income Receiver</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="incomeRemark">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.incomeRemark">Income Remark</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.isActive">Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modifier">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.modifier">Modifier</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modifyDatetime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.modifyDatetime">Modify Datetime</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creator">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.creator">Creator</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="createDatetime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsIncome.createDatetime">Create Datetime</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mtsIncome of mtsIncomes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/mts-income', mtsIncome.id, 'view']">{{ mtsIncome.id }}</a>
+              </td>
+              <td>{{ mtsIncome.incomeDate | formatMediumDatetime }}</td>
+              <td>{{ mtsIncome.incomeAmount }}</td>
+              <td>{{ mtsIncome.incomeType }}</td>
+              <td>{{ mtsIncome.incomeTypeDetail }}</td>
+              <td>{{ mtsIncome.incomePayer }}</td>
+              <td>{{ mtsIncome.incomeReceiver }}</td>
+              <td>{{ mtsIncome.incomeRemark }}</td>
+              <td>{{ mtsIncome.isActive }}</td>
+              <td>{{ mtsIncome.modifier }}</td>
+              <td>{{ mtsIncome.modifyDatetime | formatMediumDatetime }}</td>
+              <td>{{ mtsIncome.creator }}</td>
+              <td>{{ mtsIncome.createDatetime | formatMediumDatetime }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/mts-income', mtsIncome.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">檢視</span>
+                  </a>
+
+                  <a [routerLink]="['/mts-income', mtsIncome.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">編輯</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(mtsIncome)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">刪除</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

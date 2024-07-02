@@ -1,0 +1,36 @@
+{
+  "moreThanFinancialApp": {
+    "mtsExpense": {
+      "home": {
+        "title": "Mts Expenses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mts Expense",
+        "createOrEditLabel": "Create or edit a Mts Expense",
+        "notFound": "No Mts Expenses found"
+      },
+      "created": "A new Mts Expense is created with identifier {{ param }}",
+      "updated": "A Mts Expense is updated with identifier {{ param }}",
+      "deleted": "A Mts Expense is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mts Expense {{ id }}?"
+      },
+      "detail": {
+        "title": "Mts Expense"
+      },
+      "id": "ID",
+      "expenseDate": "Expense Date",
+      "expenseAmount": "Expense Amount",
+      "expenseType": "Expense Type",
+      "expenseTypeDetail": "Expense Type Detail",
+      "expensePayer": "Expense Payer",
+      "expenseReceiver": "Expense Receiver",
+      "expenseRemark": "Expense Remark",
+      "expenseReceipt": "Expense Receipt",
+      "isActive": "Is Active",
+      "modifier": "Modifier",
+      "modifyDatetime": "Modify Datetime",
+      "creator": "Creator",
+      "createDatetime": "Create Datetime"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-money-flow-view-heading"
+        data-cy="MoneyFlowViewCreateUpdateHeading"
+        jhiTranslate="moreThanFinancialApp.moneyFlowView.home.createOrEditLabel"
+      >
+        建立或編輯 Money Flow View
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.source" for="field_source">Source</label>
+          <input type="text" class="form-control" name="source" id="field_source" data-cy="source" formControlName="source" />
+          @if (editForm.get('source')!.invalid && (editForm.get('source')!.dirty || editForm.get('source')!.touched)) {
+            <div>
+              @if (editForm.get('source')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.businessId" for="field_businessId">Business Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="businessId"
+            id="field_businessId"
+            data-cy="businessId"
+            formControlName="businessId"
+          />
+          @if (editForm.get('businessId')!.invalid && (editForm.get('businessId')!.dirty || editForm.get('businessId')!.touched)) {
+            <div>
+              @if (editForm.get('businessId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.businessDate" for="field_businessDate"
+            >Business Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_businessDate"
+              data-cy="businessDate"
+              type="datetime-local"
+              class="form-control"
+              name="businessDate"
+              formControlName="businessDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('businessDate')!.invalid && (editForm.get('businessDate')!.dirty || editForm.get('businessDate')!.touched)) {
+            <div>
+              @if (editForm.get('businessDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('businessDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >此欄位應為日期和時間。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.businessAmt" for="field_businessAmt"
+            >Business Amt</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="businessAmt"
+            id="field_businessAmt"
+            data-cy="businessAmt"
+            formControlName="businessAmt"
+          />
+          @if (editForm.get('businessAmt')!.invalid && (editForm.get('businessAmt')!.dirty || editForm.get('businessAmt')!.touched)) {
+            <div>
+              @if (editForm.get('businessAmt')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('businessAmt')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >此欄位只能是數字。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.businessType" for="field_businessType"
+            >Business Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="businessType"
+            id="field_businessType"
+            data-cy="businessType"
+            formControlName="businessType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.businessTypeDetail" for="field_businessTypeDetail"
+            >Business Type Detail</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="businessTypeDetail"
+            id="field_businessTypeDetail"
+            data-cy="businessTypeDetail"
+            formControlName="businessTypeDetail"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.payer" for="field_payer">Payer</label>
+          <input type="text" class="form-control" name="payer" id="field_payer" data-cy="payer" formControlName="payer" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.receiver" for="field_receiver">Receiver</label>
+          <input type="text" class="form-control" name="receiver" id="field_receiver" data-cy="receiver" formControlName="receiver" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.remark" for="field_remark">Remark</label>
+          <input type="text" class="form-control" name="remark" id="field_remark" data-cy="remark" formControlName="remark" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.moneyFlowView.isActive" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">儲存</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

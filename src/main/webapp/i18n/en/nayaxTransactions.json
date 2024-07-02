@@ -1,0 +1,46 @@
+{
+  "moreThanFinancialApp": {
+    "nayaxTransactions": {
+      "home": {
+        "title": "Nayax Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nayax Transactions",
+        "createOrEditLabel": "Create or edit a Nayax Transactions",
+        "notFound": "No Nayax Transactions found"
+      },
+      "created": "A new Nayax Transactions is created with identifier {{ param }}",
+      "updated": "A Nayax Transactions is updated with identifier {{ param }}",
+      "deleted": "A Nayax Transactions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nayax Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Nayax Transactions"
+      },
+      "id": "ID",
+      "siteID": "Site ID",
+      "transactionID": "Transaction ID",
+      "paymentMethodID": "Payment Method ID",
+      "currency": "Currency",
+      "machineName": "Machine Name",
+      "authorizationValue": "Authorization Value",
+      "campaignID": "Campaign ID",
+      "settlementValue": "Settlement Value",
+      "productSelectionInfo": "Product Selection Info",
+      "cardNumber": "Card Number",
+      "authrizationRRN": "Authrization RRN",
+      "machineAuthorizationTime": "Machine Authorization Time",
+      "machineSettlementTime": "Machine Settlement Time",
+      "creditCardType": "Credit Card Type",
+      "cardType": "Card Type",
+      "paymentMethod": "Payment Method",
+      "transactionStatusID": "Transaction Status ID",
+      "transactionTypeID": "Transaction Type ID",
+      "billingProvider": "Billing Provider",
+      "prepaidCardHolderName": "Prepaid Card Holder Name",
+      "refundRequestBy": "Refund Request By",
+      "refundRequestDate": "Refund Request Date",
+      "refundReason": "Refund Reason"
+    }
+  }
+}

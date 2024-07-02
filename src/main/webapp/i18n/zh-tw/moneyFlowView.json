@@ -1,0 +1,33 @@
+{
+  "moreThanFinancialApp": {
+    "moneyFlowView": {
+      "home": {
+        "title": "Money Flow Views",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Money Flow View",
+        "createOrEditLabel": "建立或編輯 Money Flow View",
+        "notFound": "No Money Flow Views found"
+      },
+      "created": "新的 Money Flow View 建立成功，識別碼為 {{ param }}",
+      "updated": "識別碼為 {{ param }} 的 Money Flow View 更新成功",
+      "deleted": "識別碼為 {{ param }} 的 Money Flow View 刪除成功",
+      "delete": {
+        "question": "您確定要刪除 Money Flow View {{ id }} 嗎?"
+      },
+      "detail": {
+        "title": "Money Flow View"
+      },
+      "id": "ID",
+      "source": "Source",
+      "businessId": "Business Id",
+      "businessDate": "Business Date",
+      "businessAmt": "Business Amt",
+      "businessType": "Business Type",
+      "businessTypeDetail": "Business Type Detail",
+      "payer": "Payer",
+      "receiver": "Receiver",
+      "remark": "Remark",
+      "isActive": "Is Active"
+    }
+  }
+}

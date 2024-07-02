@@ -1,0 +1,46 @@
+{
+  "moreThanFinancialApp": {
+    "nayaxTransactions": {
+      "home": {
+        "title": "Nayax Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Nayax Transactions",
+        "createOrEditLabel": "创建或编辑 Nayax Transactions",
+        "notFound": "No Nayax Transactions found"
+      },
+      "created": "Nayax Transactions {{ param }} 创建成功",
+      "updated": "Nayax Transactions {{ param }} 更新成功",
+      "deleted": "Nayax Transactions {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Nayax Transactions {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Nayax Transactions"
+      },
+      "id": "ID",
+      "siteID": "Site ID",
+      "transactionID": "Transaction ID",
+      "paymentMethodID": "Payment Method ID",
+      "currency": "Currency",
+      "machineName": "Machine Name",
+      "authorizationValue": "Authorization Value",
+      "campaignID": "Campaign ID",
+      "settlementValue": "Settlement Value",
+      "productSelectionInfo": "Product Selection Info",
+      "cardNumber": "Card Number",
+      "authrizationRRN": "Authrization RRN",
+      "machineAuthorizationTime": "Machine Authorization Time",
+      "machineSettlementTime": "Machine Settlement Time",
+      "creditCardType": "Credit Card Type",
+      "cardType": "Card Type",
+      "paymentMethod": "Payment Method",
+      "transactionStatusID": "Transaction Status ID",
+      "transactionTypeID": "Transaction Type ID",
+      "billingProvider": "Billing Provider",
+      "prepaidCardHolderName": "Prepaid Card Holder Name",
+      "refundRequestBy": "Refund Request By",
+      "refundRequestDate": "Refund Request Date",
+      "refundReason": "Refund Reason"
+    }
+  }
+}

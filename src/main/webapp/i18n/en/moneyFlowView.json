@@ -1,0 +1,33 @@
+{
+  "moreThanFinancialApp": {
+    "moneyFlowView": {
+      "home": {
+        "title": "Money Flow Views",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Money Flow View",
+        "createOrEditLabel": "Create or edit a Money Flow View",
+        "notFound": "No Money Flow Views found"
+      },
+      "created": "A new Money Flow View is created with identifier {{ param }}",
+      "updated": "A Money Flow View is updated with identifier {{ param }}",
+      "deleted": "A Money Flow View is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Money Flow View {{ id }}?"
+      },
+      "detail": {
+        "title": "Money Flow View"
+      },
+      "id": "ID",
+      "source": "Source",
+      "businessId": "Business Id",
+      "businessDate": "Business Date",
+      "businessAmt": "Business Amt",
+      "businessType": "Business Type",
+      "businessTypeDetail": "Business Type Detail",
+      "payer": "Payer",
+      "receiver": "Receiver",
+      "remark": "Remark",
+      "isActive": "Is Active"
+    }
+  }
+}

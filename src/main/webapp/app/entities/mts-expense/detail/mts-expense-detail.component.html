@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (mtsExpense) {
+      <div>
+        <h2 data-cy="mtsExpenseDetailsHeading"><span jhiTranslate="moreThanFinancialApp.mtsExpense.detail.title">Mts Expense</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ mtsExpense.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseDate">Expense Date</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseAmount">Expense Amount</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseType">Expense Type</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseType }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseTypeDetail">Expense Type Detail</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseTypeDetail }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expensePayer">Expense Payer</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expensePayer }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceiver">Expense Receiver</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseReceiver }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseRemark">Expense Remark</span></dt>
+          <dd>
+            <span>{{ mtsExpense.expenseRemark }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceipt">Expense Receipt</span></dt>
+          <dd>
+            @if (mtsExpense.expenseReceipt) {
+              <div>
+                <a (click)="openFile(mtsExpense.expenseReceipt, mtsExpense.expenseReceiptContentType)">
+                  <img
+                    [src]="'data:' + mtsExpense.expenseReceiptContentType + ';base64,' + mtsExpense.expenseReceipt"
+                    style="max-width: 100%"
+                    alt="mtsExpense image"
+                  />
+                </a>
+                {{ mtsExpense.expenseReceiptContentType }}, {{ byteSize(mtsExpense.expenseReceipt) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.isActive">Is Active</span></dt>
+          <dd>
+            <span>{{ mtsExpense.isActive }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.modifier">Modifier</span></dt>
+          <dd>
+            <span>{{ mtsExpense.modifier }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.modifyDatetime">Modify Datetime</span></dt>
+          <dd>
+            <span>{{ mtsExpense.modifyDatetime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.creator">Creator</span></dt>
+          <dd>
+            <span>{{ mtsExpense.creator }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.mtsExpense.createDatetime">Create Datetime</span></dt>
+          <dd>
+            <span>{{ mtsExpense.createDatetime | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">返回</span>
+        </button>
+
+        <button type="button" [routerLink]="['/mts-expense', mtsExpense.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">編輯</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

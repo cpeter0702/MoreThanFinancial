@@ -1,0 +1,62 @@
+{
+  "annotations": {
+    "changelogDate": "20240702022701"
+  },
+  "applications": "*",
+  "entityTableName": "mts_income",
+  "fields": [
+    {
+      "fieldName": "incomeDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "incomeAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "incomeType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomeTypeDetail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomePayer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomeReceiver",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomeRemark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "modifier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifyDatetime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDatetime",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "name": "MtsIncome",
+  "relationships": [],
+  "searchEngine": "no"
+}

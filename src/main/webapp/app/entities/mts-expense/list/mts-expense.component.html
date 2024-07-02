@@ -1,0 +1,193 @@
+<div>
+  <h2 id="page-heading" data-cy="MtsExpenseHeading">
+    <span jhiTranslate="moreThanFinancialApp.mtsExpense.home.title">Mts Expenses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.mtsExpense.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-mts-expense"
+        [routerLink]="['/mts-expense/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.mtsExpense.home.createLabel">建立一筆新的 Mts Expense</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (mtsExpenses?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="moreThanFinancialApp.mtsExpense.home.notFound">No Mts Expenses found</span>
+    </div>
+  }
+
+  @if (mtsExpenses && mtsExpenses.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseDate">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseDate">Expense Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseAmount">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseAmount">Expense Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseType">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseType">Expense Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseTypeDetail">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseTypeDetail">Expense Type Detail</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expensePayer">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expensePayer">Expense Payer</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseReceiver">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceiver">Expense Receiver</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseRemark">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseRemark">Expense Remark</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expenseReceipt">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceipt">Expense Receipt</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.isActive">Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modifier">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.modifier">Modifier</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modifyDatetime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.modifyDatetime">Modify Datetime</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creator">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.creator">Creator</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="createDatetime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.mtsExpense.createDatetime">Create Datetime</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mtsExpense of mtsExpenses; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/mts-expense', mtsExpense.id, 'view']">{{ mtsExpense.id }}</a>
+              </td>
+              <td>{{ mtsExpense.expenseDate | formatMediumDatetime }}</td>
+              <td>{{ mtsExpense.expenseAmount }}</td>
+              <td>{{ mtsExpense.expenseType }}</td>
+              <td>{{ mtsExpense.expenseTypeDetail }}</td>
+              <td>{{ mtsExpense.expensePayer }}</td>
+              <td>{{ mtsExpense.expenseReceiver }}</td>
+              <td>{{ mtsExpense.expenseRemark }}</td>
+              <td>
+                @if (mtsExpense.expenseReceipt) {
+                  <a (click)="openFile(mtsExpense.expenseReceipt, mtsExpense.expenseReceiptContentType)">
+                    <img
+                      [src]="'data:' + mtsExpense.expenseReceiptContentType + ';base64,' + mtsExpense.expenseReceipt"
+                      style="max-height: 30px"
+                      alt="mtsExpense image"
+                    />
+                  </a>
+                  <span>{{ mtsExpense.expenseReceiptContentType }}, {{ byteSize(mtsExpense.expenseReceipt) }}</span>
+                }
+              </td>
+              <td>{{ mtsExpense.isActive }}</td>
+              <td>{{ mtsExpense.modifier }}</td>
+              <td>{{ mtsExpense.modifyDatetime | formatMediumDatetime }}</td>
+              <td>{{ mtsExpense.creator }}</td>
+              <td>{{ mtsExpense.createDatetime | formatMediumDatetime }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/mts-expense', mtsExpense.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">檢視</span>
+                  </a>
+
+                  <a [routerLink]="['/mts-expense', mtsExpense.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">編輯</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(mtsExpense)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">刪除</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

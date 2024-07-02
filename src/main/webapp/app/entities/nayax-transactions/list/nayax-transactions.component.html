@@ -1,0 +1,270 @@
+<div>
+  <h2 id="page-heading" data-cy="NayaxTransactionsHeading">
+    <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.home.title">Nayax Transactions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-nayax-transactions"
+        [routerLink]="['/nayax-transactions/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.home.createLabel">建立一筆新的 Nayax Transactions</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (nayaxTransactions?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.home.notFound">No Nayax Transactions found</span>
+    </div>
+  }
+
+  @if (nayaxTransactions && nayaxTransactions.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="siteID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.siteID">Site ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="transactionID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionID">Transaction ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="paymentMethodID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethodID">Payment Method ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currency">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.currency">Currency</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="machineName">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineName">Machine Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="authorizationValue">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.authorizationValue">Authorization Value</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="campaignID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.campaignID">Campaign ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="settlementValue">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.settlementValue">Settlement Value</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productSelectionInfo">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.productSelectionInfo">Product Selection Info</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cardNumber">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardNumber">Card Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="authrizationRRN">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.authrizationRRN">Authrization RRN</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="machineAuthorizationTime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineAuthorizationTime">Machine Authorization Time</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="machineSettlementTime">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineSettlementTime">Machine Settlement Time</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creditCardType">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.creditCardType">Credit Card Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cardType">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardType">Card Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="paymentMethod">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethod">Payment Method</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="transactionStatusID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionStatusID">Transaction Status ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="transactionTypeID">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionTypeID">Transaction Type ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="billingProvider">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.billingProvider">Billing Provider</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="prepaidCardHolderName">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.prepaidCardHolderName">Prepaid Card Holder Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="refundRequestBy">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestBy">Refund Request By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="refundRequestDate">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestDate">Refund Request Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="refundReason">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundReason">Refund Reason</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (nayaxTransactions of nayaxTransactions; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/nayax-transactions', nayaxTransactions.id, 'view']">{{ nayaxTransactions.id }}</a>
+              </td>
+              <td>{{ nayaxTransactions.siteID }}</td>
+              <td>{{ nayaxTransactions.transactionID }}</td>
+              <td>{{ nayaxTransactions.paymentMethodID }}</td>
+              <td>{{ nayaxTransactions.currency }}</td>
+              <td>{{ nayaxTransactions.machineName }}</td>
+              <td>{{ nayaxTransactions.authorizationValue }}</td>
+              <td>{{ nayaxTransactions.campaignID }}</td>
+              <td>{{ nayaxTransactions.settlementValue }}</td>
+              <td>{{ nayaxTransactions.productSelectionInfo }}</td>
+              <td>{{ nayaxTransactions.cardNumber }}</td>
+              <td>{{ nayaxTransactions.authrizationRRN }}</td>
+              <td>{{ nayaxTransactions.machineAuthorizationTime | formatMediumDatetime }}</td>
+              <td>{{ nayaxTransactions.machineSettlementTime | formatMediumDatetime }}</td>
+              <td>{{ nayaxTransactions.creditCardType }}</td>
+              <td>{{ nayaxTransactions.cardType }}</td>
+              <td>{{ nayaxTransactions.paymentMethod }}</td>
+              <td>{{ nayaxTransactions.transactionStatusID }}</td>
+              <td>{{ nayaxTransactions.transactionTypeID }}</td>
+              <td>{{ nayaxTransactions.billingProvider }}</td>
+              <td>{{ nayaxTransactions.prepaidCardHolderName }}</td>
+              <td>{{ nayaxTransactions.refundRequestBy }}</td>
+              <td>{{ nayaxTransactions.refundRequestDate | formatMediumDatetime }}</td>
+              <td>{{ nayaxTransactions.refundReason }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/nayax-transactions', nayaxTransactions.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">檢視</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/nayax-transactions', nayaxTransactions.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">編輯</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(nayaxTransactions)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">刪除</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

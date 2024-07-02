@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="MoneyFlowViewHeading">
+    <span jhiTranslate="moreThanFinancialApp.moneyFlowView.home.title">Money Flow Views</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.moneyFlowView.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-money-flow-view"
+        [routerLink]="['/money-flow-view/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="moreThanFinancialApp.moneyFlowView.home.createLabel">建立一筆新的 Money Flow View</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (moneyFlowViews?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="moreThanFinancialApp.moneyFlowView.home.notFound">No Money Flow Views found</span>
+    </div>
+  }
+
+  @if (moneyFlowViews && moneyFlowViews.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="source">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.source">Source</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessId">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessId">Business Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessDate">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessDate">Business Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessAmt">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessAmt">Business Amt</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessType">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessType">Business Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessTypeDetail">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessTypeDetail">Business Type Detail</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="payer">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.payer">Payer</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="receiver">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.receiver">Receiver</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="remark">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.remark">Remark</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span jhiTranslate="moreThanFinancialApp.moneyFlowView.isActive">Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (moneyFlowView of moneyFlowViews; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/money-flow-view', moneyFlowView.id, 'view']">{{ moneyFlowView.id }}</a>
+              </td>
+              <td>{{ moneyFlowView.source }}</td>
+              <td>{{ moneyFlowView.businessId }}</td>
+              <td>{{ moneyFlowView.businessDate | formatMediumDatetime }}</td>
+              <td>{{ moneyFlowView.businessAmt }}</td>
+              <td>{{ moneyFlowView.businessType }}</td>
+              <td>{{ moneyFlowView.businessTypeDetail }}</td>
+              <td>{{ moneyFlowView.payer }}</td>
+              <td>{{ moneyFlowView.receiver }}</td>
+              <td>{{ moneyFlowView.remark }}</td>
+              <td>{{ moneyFlowView.isActive }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/money-flow-view', moneyFlowView.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">檢視</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/money-flow-view', moneyFlowView.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">編輯</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(moneyFlowView)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">刪除</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

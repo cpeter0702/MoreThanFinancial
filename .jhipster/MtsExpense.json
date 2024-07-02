@@ -1,0 +1,67 @@
+{
+  "annotations": {
+    "changelogDate": "20240702022801"
+  },
+  "applications": "*",
+  "entityTableName": "mts_expense",
+  "fields": [
+    {
+      "fieldName": "expenseDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expenseAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expenseType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseTypeDetail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expensePayer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseReceiver",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseRemark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseReceipt",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "modifier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifyDatetime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDatetime",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "name": "MtsExpense",
+  "relationships": [],
+  "searchEngine": "no"
+}

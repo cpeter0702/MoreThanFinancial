@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (moneyFlowView) {
+      <div>
+        <h2 data-cy="moneyFlowViewDetailsHeading">
+          <span jhiTranslate="moreThanFinancialApp.moneyFlowView.detail.title">Money Flow View</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.source">Source</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.source }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessId">Business Id</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.businessId }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessDate">Business Date</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.businessDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessAmt">Business Amt</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.businessAmt }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessType">Business Type</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.businessType }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.businessTypeDetail">Business Type Detail</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.businessTypeDetail }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.payer">Payer</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.payer }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.receiver">Receiver</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.receiver }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.remark">Remark</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.remark }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.moneyFlowView.isActive">Is Active</span></dt>
+          <dd>
+            <span>{{ moneyFlowView.isActive }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">返回</span>
+        </button>
+
+        <button type="button" [routerLink]="['/money-flow-view', moneyFlowView.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">編輯</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

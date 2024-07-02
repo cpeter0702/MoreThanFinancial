@@ -1,0 +1,110 @@
+{
+  "annotations": {
+    "changelogDate": "20240702023001"
+  },
+  "applications": "*",
+  "entityTableName": "nayax_transactions",
+  "fields": [
+    {
+      "fieldName": "siteID",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transactionID",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "paymentMethodID",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "machineName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "authorizationValue",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "campaignID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "settlementValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "productSelectionInfo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cardNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "authrizationRRN",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "machineAuthorizationTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "machineSettlementTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "creditCardType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transactionStatusID",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transactionTypeID",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "billingProvider",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prepaidCardHolderName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refundRequestBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refundRequestDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "refundReason",
+      "fieldType": "String"
+    }
+  ],
+  "name": "NayaxTransactions",
+  "relationships": [],
+  "searchEngine": "no"
+}

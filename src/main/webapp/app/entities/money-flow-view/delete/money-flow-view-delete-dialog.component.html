@@ -1,0 +1,30 @@
+@if (moneyFlowView) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(moneyFlowView.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="moneyFlowViewDeleteDialogHeading" jhiTranslate="entity.delete.title">刪除作業確認</h4>
+
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-moneyFlowView-heading"
+        jhiTranslate="moreThanFinancialApp.moneyFlowView.delete.question"
+        [translateValues]="{ id: moneyFlowView.id }"
+      >
+        您確定要刪除 Money Flow View {{ moneyFlowView.id }} 嗎?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+      </button>
+
+      <button id="jhi-confirm-delete-moneyFlowView" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">刪除</span>
+      </button>
+    </div>
+  </form>
+}

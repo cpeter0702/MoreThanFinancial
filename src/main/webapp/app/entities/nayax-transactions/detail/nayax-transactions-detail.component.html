@@ -1,0 +1,124 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (nayaxTransactions) {
+      <div>
+        <h2 data-cy="nayaxTransactionsDetailsHeading">
+          <span jhiTranslate="moreThanFinancialApp.nayaxTransactions.detail.title">Nayax Transactions</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.siteID">Site ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.siteID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionID">Transaction ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.transactionID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethodID">Payment Method ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.paymentMethodID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.currency">Currency</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.currency }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineName">Machine Name</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.machineName }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.authorizationValue">Authorization Value</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.authorizationValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.campaignID">Campaign ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.campaignID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.settlementValue">Settlement Value</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.settlementValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.productSelectionInfo">Product Selection Info</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.productSelectionInfo }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardNumber">Card Number</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.cardNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.authrizationRRN">Authrization RRN</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.authrizationRRN }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineAuthorizationTime">Machine Authorization Time</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.machineAuthorizationTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineSettlementTime">Machine Settlement Time</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.machineSettlementTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.creditCardType">Credit Card Type</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.creditCardType }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardType">Card Type</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.cardType }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethod">Payment Method</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.paymentMethod }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionStatusID">Transaction Status ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.transactionStatusID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionTypeID">Transaction Type ID</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.transactionTypeID }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.billingProvider">Billing Provider</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.billingProvider }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.prepaidCardHolderName">Prepaid Card Holder Name</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.prepaidCardHolderName }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestBy">Refund Request By</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.refundRequestBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestDate">Refund Request Date</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.refundRequestDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundReason">Refund Reason</span></dt>
+          <dd>
+            <span>{{ nayaxTransactions.refundReason }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">返回</span>
+        </button>
+
+        <button type="button" [routerLink]="['/nayax-transactions', nayaxTransactions.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">編輯</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

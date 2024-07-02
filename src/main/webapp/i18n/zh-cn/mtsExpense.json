@@ -1,0 +1,36 @@
+{
+  "moreThanFinancialApp": {
+    "mtsExpense": {
+      "home": {
+        "title": "Mts Expenses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Mts Expense",
+        "createOrEditLabel": "创建或编辑 Mts Expense",
+        "notFound": "No Mts Expenses found"
+      },
+      "created": "Mts Expense {{ param }} 创建成功",
+      "updated": "Mts Expense {{ param }} 更新成功",
+      "deleted": "Mts Expense {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Mts Expense {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Mts Expense"
+      },
+      "id": "ID",
+      "expenseDate": "Expense Date",
+      "expenseAmount": "Expense Amount",
+      "expenseType": "Expense Type",
+      "expenseTypeDetail": "Expense Type Detail",
+      "expensePayer": "Expense Payer",
+      "expenseReceiver": "Expense Receiver",
+      "expenseRemark": "Expense Remark",
+      "expenseReceipt": "Expense Receipt",
+      "isActive": "Is Active",
+      "modifier": "Modifier",
+      "modifyDatetime": "Modify Datetime",
+      "creator": "Creator",
+      "createDatetime": "Create Datetime"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "moreThanFinancialApp": {
+    "mtsIncome": {
+      "home": {
+        "title": "Mts Incomes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mts Income",
+        "createOrEditLabel": "Create or edit a Mts Income",
+        "notFound": "No Mts Incomes found"
+      },
+      "created": "A new Mts Income is created with identifier {{ param }}",
+      "updated": "A Mts Income is updated with identifier {{ param }}",
+      "deleted": "A Mts Income is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mts Income {{ id }}?"
+      },
+      "detail": {
+        "title": "Mts Income"
+      },
+      "id": "ID",
+      "incomeDate": "Income Date",
+      "incomeAmount": "Income Amount",
+      "incomeType": "Income Type",
+      "incomeTypeDetail": "Income Type Detail",
+      "incomePayer": "Income Payer",
+      "incomeReceiver": "Income Receiver",
+      "incomeRemark": "Income Remark",
+      "isActive": "Is Active",
+      "modifier": "Modifier",
+      "modifyDatetime": "Modify Datetime",
+      "creator": "Creator",
+      "createDatetime": "Create Datetime"
+    }
+  }
+}

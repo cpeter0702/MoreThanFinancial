@@ -1,0 +1,406 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-nayax-transactions-heading"
+        data-cy="NayaxTransactionsCreateUpdateHeading"
+        jhiTranslate="moreThanFinancialApp.nayaxTransactions.home.createOrEditLabel"
+      >
+        建立或編輯 Nayax Transactions
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.siteID" for="field_siteID">Site ID</label>
+          <input type="number" class="form-control" name="siteID" id="field_siteID" data-cy="siteID" formControlName="siteID" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionID" for="field_transactionID"
+            >Transaction ID</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="transactionID"
+            id="field_transactionID"
+            data-cy="transactionID"
+            formControlName="transactionID"
+          />
+          @if (editForm.get('transactionID')!.invalid && (editForm.get('transactionID')!.dirty || editForm.get('transactionID')!.touched)) {
+            <div>
+              @if (editForm.get('transactionID')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethodID" for="field_paymentMethodID"
+            >Payment Method ID</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="paymentMethodID"
+            id="field_paymentMethodID"
+            data-cy="paymentMethodID"
+            formControlName="paymentMethodID"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.currency" for="field_currency">Currency</label>
+          <input type="text" class="form-control" name="currency" id="field_currency" data-cy="currency" formControlName="currency" />
+          @if (editForm.get('currency')!.invalid && (editForm.get('currency')!.dirty || editForm.get('currency')!.touched)) {
+            <div>
+              @if (editForm.get('currency')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineName" for="field_machineName"
+            >Machine Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="machineName"
+            id="field_machineName"
+            data-cy="machineName"
+            formControlName="machineName"
+          />
+          @if (editForm.get('machineName')!.invalid && (editForm.get('machineName')!.dirty || editForm.get('machineName')!.touched)) {
+            <div>
+              @if (editForm.get('machineName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.authorizationValue" for="field_authorizationValue"
+            >Authorization Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="authorizationValue"
+            id="field_authorizationValue"
+            data-cy="authorizationValue"
+            formControlName="authorizationValue"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.campaignID" for="field_campaignID"
+            >Campaign ID</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="campaignID"
+            id="field_campaignID"
+            data-cy="campaignID"
+            formControlName="campaignID"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.settlementValue" for="field_settlementValue"
+            >Settlement Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="settlementValue"
+            id="field_settlementValue"
+            data-cy="settlementValue"
+            formControlName="settlementValue"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="moreThanFinancialApp.nayaxTransactions.productSelectionInfo"
+            for="field_productSelectionInfo"
+            >Product Selection Info</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productSelectionInfo"
+            id="field_productSelectionInfo"
+            data-cy="productSelectionInfo"
+            formControlName="productSelectionInfo"
+          />
+          @if (
+            editForm.get('productSelectionInfo')!.invalid &&
+            (editForm.get('productSelectionInfo')!.dirty || editForm.get('productSelectionInfo')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('productSelectionInfo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardNumber" for="field_cardNumber"
+            >Card Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="cardNumber"
+            id="field_cardNumber"
+            data-cy="cardNumber"
+            formControlName="cardNumber"
+          />
+          @if (editForm.get('cardNumber')!.invalid && (editForm.get('cardNumber')!.dirty || editForm.get('cardNumber')!.touched)) {
+            <div>
+              @if (editForm.get('cardNumber')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.authrizationRRN" for="field_authrizationRRN"
+            >Authrization RRN</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="authrizationRRN"
+            id="field_authrizationRRN"
+            data-cy="authrizationRRN"
+            formControlName="authrizationRRN"
+          />
+          @if (
+            editForm.get('authrizationRRN')!.invalid && (editForm.get('authrizationRRN')!.dirty || editForm.get('authrizationRRN')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('authrizationRRN')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineAuthorizationTime"
+            for="field_machineAuthorizationTime"
+            >Machine Authorization Time</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_machineAuthorizationTime"
+              data-cy="machineAuthorizationTime"
+              type="datetime-local"
+              class="form-control"
+              name="machineAuthorizationTime"
+              formControlName="machineAuthorizationTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="moreThanFinancialApp.nayaxTransactions.machineSettlementTime"
+            for="field_machineSettlementTime"
+            >Machine Settlement Time</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_machineSettlementTime"
+              data-cy="machineSettlementTime"
+              type="datetime-local"
+              class="form-control"
+              name="machineSettlementTime"
+              formControlName="machineSettlementTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.creditCardType" for="field_creditCardType"
+            >Credit Card Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="creditCardType"
+            id="field_creditCardType"
+            data-cy="creditCardType"
+            formControlName="creditCardType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.cardType" for="field_cardType">Card Type</label>
+          <input type="text" class="form-control" name="cardType" id="field_cardType" data-cy="cardType" formControlName="cardType" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.paymentMethod" for="field_paymentMethod"
+            >Payment Method</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentMethod"
+            id="field_paymentMethod"
+            data-cy="paymentMethod"
+            formControlName="paymentMethod"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionStatusID"
+            for="field_transactionStatusID"
+            >Transaction Status ID</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transactionStatusID"
+            id="field_transactionStatusID"
+            data-cy="transactionStatusID"
+            formControlName="transactionStatusID"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.transactionTypeID" for="field_transactionTypeID"
+            >Transaction Type ID</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transactionTypeID"
+            id="field_transactionTypeID"
+            data-cy="transactionTypeID"
+            formControlName="transactionTypeID"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.billingProvider" for="field_billingProvider"
+            >Billing Provider</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="billingProvider"
+            id="field_billingProvider"
+            data-cy="billingProvider"
+            formControlName="billingProvider"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="moreThanFinancialApp.nayaxTransactions.prepaidCardHolderName"
+            for="field_prepaidCardHolderName"
+            >Prepaid Card Holder Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="prepaidCardHolderName"
+            id="field_prepaidCardHolderName"
+            data-cy="prepaidCardHolderName"
+            formControlName="prepaidCardHolderName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestBy" for="field_refundRequestBy"
+            >Refund Request By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="refundRequestBy"
+            id="field_refundRequestBy"
+            data-cy="refundRequestBy"
+            formControlName="refundRequestBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundRequestDate" for="field_refundRequestDate"
+            >Refund Request Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_refundRequestDate"
+              data-cy="refundRequestDate"
+              type="datetime-local"
+              class="form-control"
+              name="refundRequestDate"
+              formControlName="refundRequestDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.nayaxTransactions.refundReason" for="field_refundReason"
+            >Refund Reason</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="refundReason"
+            id="field_refundReason"
+            data-cy="refundReason"
+            formControlName="refundReason"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">儲存</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

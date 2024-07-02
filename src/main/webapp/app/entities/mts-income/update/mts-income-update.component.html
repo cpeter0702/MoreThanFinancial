@@ -1,0 +1,210 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-mts-income-heading"
+        data-cy="MtsIncomeCreateUpdateHeading"
+        jhiTranslate="moreThanFinancialApp.mtsIncome.home.createOrEditLabel"
+      >
+        建立或編輯 Mts Income
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeDate" for="field_incomeDate">Income Date</label>
+          <div class="d-flex">
+            <input
+              id="field_incomeDate"
+              data-cy="incomeDate"
+              type="datetime-local"
+              class="form-control"
+              name="incomeDate"
+              formControlName="incomeDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('incomeDate')!.invalid && (editForm.get('incomeDate')!.dirty || editForm.get('incomeDate')!.touched)) {
+            <div>
+              @if (editForm.get('incomeDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('incomeDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >此欄位應為日期和時間。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeAmount" for="field_incomeAmount"
+            >Income Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="incomeAmount"
+            id="field_incomeAmount"
+            data-cy="incomeAmount"
+            formControlName="incomeAmount"
+          />
+          @if (editForm.get('incomeAmount')!.invalid && (editForm.get('incomeAmount')!.dirty || editForm.get('incomeAmount')!.touched)) {
+            <div>
+              @if (editForm.get('incomeAmount')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('incomeAmount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >此欄位只能是數字。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeType" for="field_incomeType">Income Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="incomeType"
+            id="field_incomeType"
+            data-cy="incomeType"
+            formControlName="incomeType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeTypeDetail" for="field_incomeTypeDetail"
+            >Income Type Detail</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="incomeTypeDetail"
+            id="field_incomeTypeDetail"
+            data-cy="incomeTypeDetail"
+            formControlName="incomeTypeDetail"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomePayer" for="field_incomePayer">Income Payer</label>
+          <input
+            type="text"
+            class="form-control"
+            name="incomePayer"
+            id="field_incomePayer"
+            data-cy="incomePayer"
+            formControlName="incomePayer"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeReceiver" for="field_incomeReceiver"
+            >Income Receiver</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="incomeReceiver"
+            id="field_incomeReceiver"
+            data-cy="incomeReceiver"
+            formControlName="incomeReceiver"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.incomeRemark" for="field_incomeRemark"
+            >Income Remark</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="incomeRemark"
+            id="field_incomeRemark"
+            data-cy="incomeRemark"
+            formControlName="incomeRemark"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.isActive" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.modifier" for="field_modifier">Modifier</label>
+          <input type="text" class="form-control" name="modifier" id="field_modifier" data-cy="modifier" formControlName="modifier" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.modifyDatetime" for="field_modifyDatetime"
+            >Modify Datetime</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifyDatetime"
+              data-cy="modifyDatetime"
+              type="datetime-local"
+              class="form-control"
+              name="modifyDatetime"
+              formControlName="modifyDatetime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.creator" for="field_creator">Creator</label>
+          <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsIncome.createDatetime" for="field_createDatetime"
+            >Create Datetime</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDatetime"
+              data-cy="createDatetime"
+              type="datetime-local"
+              class="form-control"
+              name="createDatetime"
+              formControlName="createDatetime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">儲存</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

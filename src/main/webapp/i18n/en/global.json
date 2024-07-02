@@ -7,7 +7,11 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "mtsIncome": "Mts Income",
+        "mtsExpense": "Mts Expense",
+        "moneyFlowView": "Money Flow View",
+        "nayaxTransactions": "Nayax Transactions"
       },
       "account": {
         "main": "Account",

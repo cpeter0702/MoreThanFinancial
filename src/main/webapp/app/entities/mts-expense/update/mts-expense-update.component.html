@@ -1,0 +1,264 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-mts-expense-heading"
+        data-cy="MtsExpenseCreateUpdateHeading"
+        jhiTranslate="moreThanFinancialApp.mtsExpense.home.createOrEditLabel"
+      >
+        建立或編輯 Mts Expense
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseDate" for="field_expenseDate">Expense Date</label>
+          <div class="d-flex">
+            <input
+              id="field_expenseDate"
+              data-cy="expenseDate"
+              type="datetime-local"
+              class="form-control"
+              name="expenseDate"
+              formControlName="expenseDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('expenseDate')!.invalid && (editForm.get('expenseDate')!.dirty || editForm.get('expenseDate')!.touched)) {
+            <div>
+              @if (editForm.get('expenseDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('expenseDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >此欄位應為日期和時間。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseAmount" for="field_expenseAmount"
+            >Expense Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="expenseAmount"
+            id="field_expenseAmount"
+            data-cy="expenseAmount"
+            formControlName="expenseAmount"
+          />
+          @if (editForm.get('expenseAmount')!.invalid && (editForm.get('expenseAmount')!.dirty || editForm.get('expenseAmount')!.touched)) {
+            <div>
+              @if (editForm.get('expenseAmount')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">此欄位必須填寫。</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('expenseAmount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >此欄位只能是數字。</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseType" for="field_expenseType">Expense Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="expenseType"
+            id="field_expenseType"
+            data-cy="expenseType"
+            formControlName="expenseType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseTypeDetail" for="field_expenseTypeDetail"
+            >Expense Type Detail</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="expenseTypeDetail"
+            id="field_expenseTypeDetail"
+            data-cy="expenseTypeDetail"
+            formControlName="expenseTypeDetail"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expensePayer" for="field_expensePayer"
+            >Expense Payer</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="expensePayer"
+            id="field_expensePayer"
+            data-cy="expensePayer"
+            formControlName="expensePayer"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceiver" for="field_expenseReceiver"
+            >Expense Receiver</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="expenseReceiver"
+            id="field_expenseReceiver"
+            data-cy="expenseReceiver"
+            formControlName="expenseReceiver"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseRemark" for="field_expenseRemark"
+            >Expense Remark</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="expenseRemark"
+            id="field_expenseRemark"
+            data-cy="expenseRemark"
+            formControlName="expenseRemark"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.expenseReceipt" for="field_expenseReceipt"
+            >Expense Receipt</label
+          >
+          <div>
+            @if (editForm.get('expenseReceipt')!.value) {
+              <img
+                [src]="'data:' + editForm.get('expenseReceiptContentType')!.value + ';base64,' + editForm.get('expenseReceipt')!.value"
+                style="max-height: 100px"
+                alt="mtsExpense image"
+              />
+            }
+            @if (editForm.get('expenseReceipt')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start"
+                  >{{ editForm.get('expenseReceiptContentType')!.value }}, {{ byteSize(editForm.get('expenseReceipt')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="clearInputImage('expenseReceipt', 'expenseReceiptContentType', 'file_expenseReceipt')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_expenseReceipt"
+              data-cy="expenseReceipt"
+              (change)="setFileData($event, 'expenseReceipt', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="expenseReceipt"
+            id="field_expenseReceipt"
+            data-cy="expenseReceipt"
+            formControlName="expenseReceipt"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="expenseReceiptContentType"
+            id="field_expenseReceiptContentType"
+            formControlName="expenseReceiptContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.isActive" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.modifier" for="field_modifier">Modifier</label>
+          <input type="text" class="form-control" name="modifier" id="field_modifier" data-cy="modifier" formControlName="modifier" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.modifyDatetime" for="field_modifyDatetime"
+            >Modify Datetime</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifyDatetime"
+              data-cy="modifyDatetime"
+              type="datetime-local"
+              class="form-control"
+              name="modifyDatetime"
+              formControlName="modifyDatetime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.creator" for="field_creator">Creator</label>
+          <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="moreThanFinancialApp.mtsExpense.createDatetime" for="field_createDatetime"
+            >Create Datetime</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDatetime"
+              data-cy="createDatetime"
+              type="datetime-local"
+              class="form-control"
+              name="createDatetime"
+              formControlName="createDatetime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">儲存</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

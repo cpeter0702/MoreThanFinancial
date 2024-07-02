@@ -48,6 +48,10 @@ public class CacheConfiguration {
             createCache(cm, com.morethansweet.financial.domain.User.class.getName());
             createCache(cm, com.morethansweet.financial.domain.Authority.class.getName());
             createCache(cm, com.morethansweet.financial.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.morethansweet.financial.domain.MtsIncome.class.getName());
+            createCache(cm, com.morethansweet.financial.domain.MtsExpense.class.getName());
+            createCache(cm, com.morethansweet.financial.domain.MoneyFlowView.class.getName());
+            createCache(cm, com.morethansweet.financial.domain.NayaxTransactions.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
